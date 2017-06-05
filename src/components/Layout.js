@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setUserName } from "../actions/userActions"
+import { setUserName } from "../actions/userActions";
+import { createGoal } from "../actions/goalActions";
 
 function mapStateToProps(store) {
     return {
-    	name: store.name
+    	name: store.user.name
     }
 }
 class Layout extends React.Component{
@@ -15,6 +16,7 @@ class Layout extends React.Component{
 
 	componentWillMount(){
 		this.props.dispatch(setUserName("Kell Maresh"));
+		this.props.dispatch(createGoal("Master React"));
 	}
 	render(){
 

@@ -1,0 +1,120 @@
+List of possible actions to implement: (txt just for brainstorming purposes)
+
+- CREATE_GOAL (payload: )
+- DELETE_GOAL (payload: id)
+
+
+
+
+
+
+
+
+
+
+
+Prototype:
+
+
+Main Nav:														Goals | My Profile 
+_________________________________________________________________________________
+
+My Goals
+_________________________________________________________________________________
+
+Daily | Weekly | Monthly | 2017
+_________________________________________________________________________________
+
+
+June 4, 2017										| (Right part of screen could have options)
+Goal 1			+| Status 	| - + T					|
+Goal 2 			+| Status 	| - + T					|
+													|
+
+|See Previous Daily Goals| <-Loads more
+
+
+
+
+
+
+
+
+
+
+
+2#: Goal Module: (Regardless of timeframe)
+Goal Declaration (Could choose from existing goals, to help with progress tracking <- Autocomplete would be useful for this)
+Status (Done, Incomplete, Delayed, Etc)
+Optional Description
+Optional progress tracker (in units or in time). Can have buttons to increment or decrement the progress, or setting timers or countdown timers.
+
+Possible State tree:
+
+{
+	goals: {
+		yearlyGoals: [],
+		monthlyGoals: [],
+		weeklyGoals: [],
+		dailyGoals: [
+			{
+				id: number,
+				description: string,
+				isFavorite: boolean (would help for autocompleting future goals)
+				status: string from only the following options: done, incomplete, delayed
+				
+
+
+				quantifiableByUnits: boolean,
+				quantifiableByTime: boolean,
+				period: date format?
+				progressTracker: null, number
+			}, etc
+		]
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+React Goals App
+ 
+ 
+Main Features:
+ 
+1#: 
+ 
+Daily Goals	--	Weekly Goals		--	Monthly Goals		-- 	Yearly Goals
+ 
+ 
+Should all this be in a single page? Or should each timeframe have its own page?
+ 
+ 
+2#: Goal Module: (Regardless of timeframe)
+Goal Declaration (Could choose from existing goals, to help with progress tracking <- Autocomplete would be useful for this)
+Status (Done, Incomplete, Delayed, Etc)
+Optional Description
+Optional progress tracker (in units or in time). Can have buttons to increment or decrement the progress, or setting timers or countdown timers.
+ 
+ 
+3#: Goals Container: Is the container that groups independent goals into a specific due date to accomplish that group of goals.
+Timeframe type (Daily, weekly, monthly, yearly)
+Specific time period to accomplish the group of goals (a specific day, a specific week, etc)
+Can contain one or more goals
+If all goals within the group are achieved, it could be marked as completed as a whole
+Can collapse or expand the goals that it has
+ 
+ 
+#4: Social Aspect: Users can give their tips on what works for them to accomplish goals, prioritize, and get the most important things done, or to achieve consistent progress. Users can also see other people’s suggestions, and vote up and the best ones. Then the best ones can be featured and displayed as suggestions to users while they work on their goals, maybe as a non-invasive popup tab.
+ 
+Could also suggest resources as videos, talks, books, methodologies, motivation
+ 
+ 
+#5: Reminders
