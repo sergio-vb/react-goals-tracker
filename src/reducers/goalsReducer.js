@@ -1,17 +1,32 @@
 import expect from "expect";
 
 export default function reducer(state={
-	yearlyGoals: [],
-	monthlyGoals: [],
-	weeklyGoals: [],
-	dailyGoals: []
+	yearly: [],
+	monthly: [],
+	weekly: [],
+	daily: [{
+		id: 0,
+		goal: "Create a test first goal",
+		status: "Incomplete",
+	}]
 }, action){
 
 	switch (action.type){
+
 		case "CREATE_GOAL":
-			console.log("Fake goal created");
-			state = Object.assign({}, state, {dailyGoals: state.dailyGoals.concat(action.payload)});
+			
+			const newGoal = {
+				id: Date.now(),
+				goal: action.goal,
+				status: "Incomplete"
+			}
+			
+			state = Object.assign({}, state, {
+				[action.timeframe]: state[action.timeframe].concat(newGoal)
+			});
 			break;
+
+		
 		default:
 			state = Object.assign({}, state);
 	}
@@ -21,18 +36,14 @@ export default function reducer(state={
 expect(
 	reducer(undefined, { type: "TEST"})
 ).toEqual({
-	yearlyGoals: [],
-	monthlyGoals: [],
-	weeklyGoals: [],
-	dailyGoals: []
+	yearly: [],
+	monthly: [],
+	weekly: [],
+	daily: [{
+		id: 0,
+		goal: "Create a test first goal",
+		status: "Incomplete",
+	}]
 });
 
-expect(
-	reducer(undefined, { type: "CREATE_GOAL", payload: "Master React and Redux"})
-).toEqual({
-	yearlyGoals: [],
-	monthlyGoals: [],
-	weeklyGoals: [],
-	dailyGoals: ["Master React and Redux"]
-});
 console.log("goalsReducer tests passed!");

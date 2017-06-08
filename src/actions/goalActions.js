@@ -1,6 +1,7 @@
-export function createGoal(description){
+export function createGoal(goal, timeframe){
 	return {
 		type: "CREATE_GOAL",
-		payload: description
+		goal,
+		timeframe
 	}
 }

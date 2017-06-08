@@ -16,7 +16,7 @@ class Layout extends React.Component{
 
 	componentWillMount(){
 		this.props.dispatch(setUserName("Kell Maresh"));
-		this.props.dispatch(createGoal("Master React"));
+		this.props.dispatch(createGoal("Master React", "daily"));
 	}
 	render(){
 
